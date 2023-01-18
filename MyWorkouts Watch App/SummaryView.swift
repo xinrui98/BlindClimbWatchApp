@@ -11,6 +11,7 @@ import HealthKit
 struct SummaryView: View {
     
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var workoutManager: WorkoutManager
     
     @State private var durationFormatter:
     DateComponentsFormatter = {
@@ -20,26 +21,31 @@ struct SummaryView: View {
         return formatter
     }()
     var body: some View {
-        ScrollView(.vertical){
-            VStack(alignment: .leading){
-                SummaryMetricView(title: "Total Time", value: durationFormatter.string(from: 30 * 60 + 15) ?? "").accentColor(Color.yellow)
-                
-                SummaryMetricView(
-                    title: "Total Energy",
-                    value: Measurement(value: 96, unit: UnitEnergy.kilocalories)
-                        .formatted(.measurement(width: .abbreviated, usage: .workout, numberFormatStyle: .number))).accentColor(Color.green)
-                
-                SummaryMetricView(title: "Avg. Heart Rate", value: 142.formatted(.number.precision(.fractionLength(0))) + "bpm").accentColor(Color.red)
-                                
-                Button("Done"){
-                    dismiss()
+        if workoutManager.workout == nil{
+            ProgressView("Saving Workout").navigationBarHidden(true)
+        }else{
+            ScrollView(.vertical){
+                VStack(alignment: .leading){
+                    SummaryMetricView(title: "Total Time", value: durationFormatter.string(from: 30 * 60 + 15) ?? "").accentColor(Color.yellow)
+                    
+                    SummaryMetricView(
+                        title: "Total Energy",
+                        value: Measurement(value: 96, unit: UnitEnergy.kilocalories)
+                            .formatted(.measurement(width: .abbreviated, usage: .workout, numberFormatStyle: .number))).accentColor(Color.green)
+                    
+                    SummaryMetricView(title: "Avg. Heart Rate", value: 142.formatted(.number.precision(.fractionLength(0))) + "bpm").accentColor(Color.red)
+                    
+                    Button("Done"){
+                        exit(0)
+                    }
                 }
+                .scenePadding()
+                
             }
-            .scenePadding()
-            
+            .navigationTitle("Summary")
+            .navigationBarTitleDisplayMode(.inline)
         }
-        .navigationTitle("Summary")
-        .navigationBarTitleDisplayMode(.inline)
+        
     }
     
 }

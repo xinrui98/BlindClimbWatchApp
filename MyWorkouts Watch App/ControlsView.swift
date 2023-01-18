@@ -37,7 +37,7 @@ struct ControlsView: View {
                     }
                     .tint(Color.yellow)
                     .font(.title2)
-                    Text("Play")
+                    Text("Resume")
                 }
             }else{
                 VStack{

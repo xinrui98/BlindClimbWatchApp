@@ -21,6 +21,9 @@
 		746F77C02976517300330521 /* ControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746F77BF2976517300330521 /* ControlsView.swift */; };
 		746F77C2297651FF00330521 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746F77C1297651FF00330521 /* SummaryView.swift */; };
 		746F77C4297652A200330521 /* WorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746F77C3297652A200330521 /* WorkoutManager.swift */; };
+		74FEFF1F297829EF00C75125 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FEFF1E297829EF00C75125 /* AudioManager.swift */; };
+		74FEFF2129782C0F00C75125 /* bruh.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 74FEFF2029782C0F00C75125 /* bruh.mp3 */; };
+		74FEFF2329782D0B00C75125 /* snor.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 74FEFF2229782D0B00C75125 /* snor.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +84,9 @@
 		746F77C3297652A200330521 /* WorkoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutManager.swift; sourceTree = "<group>"; };
 		746F77C529767D3300330521 /* MyWorkouts Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "MyWorkouts Watch App.entitlements"; sourceTree = "<group>"; };
 		746F77C629767D4600330521 /* MyWorkouts-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "MyWorkouts-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
+		74FEFF1E297829EF00C75125 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		74FEFF2029782C0F00C75125 /* bruh.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bruh.mp3; sourceTree = "<group>"; };
+		74FEFF2229782D0B00C75125 /* snor.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = snor.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +140,7 @@
 			children = (
 				746F77C629767D4600330521 /* MyWorkouts-Watch-App-Info.plist */,
 				746F77C529767D3300330521 /* MyWorkouts Watch App.entitlements */,
+				74FEFF1E297829EF00C75125 /* AudioManager.swift */,
 				746F778B29764FF000330521 /* MyWorkoutsApp.swift */,
 				746F778D29764FF000330521 /* ContentView.swift */,
 				746F77C1297651FF00330521 /* SummaryView.swift */,
@@ -143,6 +150,8 @@
 				746F77BD2976512D00330521 /* ElapsedTimeView.swift */,
 				746F77BF2976517300330521 /* ControlsView.swift */,
 				746F778F29764FF100330521 /* Assets.xcassets */,
+				74FEFF2029782C0F00C75125 /* bruh.mp3 */,
+				74FEFF2229782D0B00C75125 /* snor.mp3 */,
 				746F779129764FF100330521 /* Preview Content */,
 			);
 			path = "MyWorkouts Watch App";
@@ -305,8 +314,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74FEFF2329782D0B00C75125 /* snor.mp3 in Resources */,
 				746F779329764FF100330521 /* Preview Assets.xcassets in Resources */,
 				746F779029764FF100330521 /* Assets.xcassets in Resources */,
+				74FEFF2129782C0F00C75125 /* bruh.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,6 +348,7 @@
 				746F77BE2976512D00330521 /* ElapsedTimeView.swift in Sources */,
 				746F77BC297650EE00330521 /* MetricsView.swift in Sources */,
 				746F77C4297652A200330521 /* WorkoutManager.swift in Sources */,
+				74FEFF1F297829EF00C75125 /* AudioManager.swift in Sources */,
 				746F77C02976517300330521 /* ControlsView.swift in Sources */,
 				746F77BA2976507800330521 /* SessionPagingView.swift in Sources */,
 			);

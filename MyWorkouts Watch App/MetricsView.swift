@@ -17,7 +17,7 @@ struct MetricsView: View {
             context in
             VStack(alignment: .leading){
 //                Text(workoutManager.selectedWorkout?.name ?? "nothing")
-                ElapsesTimeView(elapsedTime: workoutManager.builder!.elapsedTime, showSubseconds: context.cadence == .live).foregroundColor(Color.yellow)
+                ElapsesTimeView(elapsedTime: workoutManager.builder?.elapsedTime ?? 0.0, showSubseconds: context.cadence == .live).foregroundColor(Color.yellow)
                 Text(Measurement(value: workoutManager.activeEnergy , unit: UnitEnergy.calories).formatted(
                     .measurement(width: .abbreviated, usage: .workout, numberFormatStyle: .number))
                 )

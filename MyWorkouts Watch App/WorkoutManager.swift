@@ -102,6 +102,7 @@ class WorkoutManager: NSObject, ObservableObject {
     func endWorkout(){
         debugPrint("end")
         session?.end()
+        selectedWorkout=nil
         showingSummaryView = true
 
     }

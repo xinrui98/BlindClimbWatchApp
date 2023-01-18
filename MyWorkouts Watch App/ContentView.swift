@@ -7,57 +7,62 @@
 
 import SwiftUI
 import HealthKit
-
-//struct TempView: View {
-//    @EnvironmentObject var workoutManager: WorkoutManager
-//    
-//    var body: some View {
-//        SessionPagingView()
-//    }
-//}
+import AVFoundation
 
 struct ContentView: View {
     
-    //    @EnvironmentObject var workoutManager: WorkoutManager
+    @State private var textToSpeak = "Hello, this is a sample text to speak."
     
-//    @StateObject var workoutManager = WorkoutManager()
     @EnvironmentObject var workoutManager: WorkoutManager
-
     
     var climbWorkout: HKWorkoutActivityType = .running
     
+    let syn = AVSpeechSynthesizer()
+    
     var body: some View {
+        
         VStack{
             NavigationStack{
                 
-                Image(systemName: "headphones")
-                    .font(.system(size: 30))
-                
-                Spacer()
-                Spacer()
-                Spacer()
+                //                Image(systemName: "headphones")
+                //                    .font(.system(size: 30))
                 
                 
-                Text("Connect Bluetooth headphones to your AI climb assistant")
-                    .font(.footnote)
-                    .multilineTextAlignment(.center)
+                //                Text("Connect Bluetooth headphones to your AI climb assistant")
+                //                    .font(.footnote)
+                //                    .multilineTextAlignment(.center)
                 
-                Spacer()
-                Spacer()
-                Spacer()
-                
-                NavigationLink(destination:         SessionPagingView().onAppear {
+                NavigationLink(destination: SessionPagingView().onAppear {
+                    
+                    let utterance = AVSpeechUtterance(string: "Workout started")
+                    utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+                    utterance.rate = 0.5
+                    
+                    syn.speak(utterance)
+                    
+                    //                    AudioManager.shared.startPlayer(track: "bruh")
+                    
                     workoutManager.selectedWorkout = climbWorkout
-                }) {
-                    Text("Start Climb")
+                }
+                ) {
+                    
+                    Image(systemName: "play.fill").resizable(resizingMode: .stretch)
+                        .font(.largeTitle)
+                        .frame(width: 88, height: 88)
+                    
                 }
                 
             }
             .environmentObject(workoutManager)
         }.onAppear{
             workoutManager.requestAuthorization()
-        }
+            let utterance = AVSpeechUtterance(string: "Connect Bluetooth headphones to your AI climb assistant. Tap on watch face to start workout")
+            utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+            utterance.rate = 0.5
             
+            syn.speak(utterance)
+        }
+        
         
     }
 }
