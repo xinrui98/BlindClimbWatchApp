@@ -40,8 +40,6 @@ struct ContentView: View {
                     
                     syn.speak(utterance)
                     
-                    //                    AudioManager.shared.startPlayer(track: "bruh")
-                    
                     workoutManager.selectedWorkout = climbWorkout
                 }
                 ) {
@@ -56,7 +54,7 @@ struct ContentView: View {
             .environmentObject(workoutManager)
         }.onAppear{
             workoutManager.requestAuthorization()
-            let utterance = AVSpeechUtterance(string: "Connect Bluetooth headphones to your AI climb assistant. Tap on watch face to start workout")
+            let utterance = AVSpeechUtterance(string: "Tap on watch face to start workout")
             utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
             utterance.rate = 0.5
             
