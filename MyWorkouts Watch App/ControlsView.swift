@@ -17,6 +17,11 @@ struct ControlsView: View {
     @State var isRunning: Bool = false
     
     let syn = AVSpeechSynthesizer()
+    
+    func generateRandomNumber() -> String {
+        let randomNumber = Int.random(in: 10000000...99999999)
+        return String(randomNumber)
+    }
 
     var body: some View {
         
@@ -35,7 +40,7 @@ struct ControlsView: View {
                 Button{
                     
                     // Create the URL for the JSONPlaceholder API endpoint
-                    guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts") else { return }
+                    guard let url = URL(string: "https://mzpoqw4tt9.execute-api.ap-southeast-1.amazonaws.com/Prod/applewatchstats") else { return }
 
                     // Create the URL request and configure it with the appropriate method (e.g., GET, POST, etc.)
                     var request = URLRequest(url: url)
@@ -43,7 +48,14 @@ struct ControlsView: View {
                     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
                     // Create a dictionary to hold the data to be sent in the request body
-                    let postData = ["title": "My New Post", "body": "This is the body of my new post.", "userId": 1] as [String : Any]
+                    let postData = [ "id": generateRandomNumber(),
+                                     "color":"",
+                                     "timeInSeconds":String(workoutManager.builder?.elapsedTime ?? 0.0),
+                                     "date":"",
+                                     "calories":String(workoutManager.activeEnergy),
+                                     "heartRate":String(workoutManager.heartRate.formatted(.number.precision(.fractionLength(0)))),
+                                     "createdAt":"2022-02-26T16:37:48.244Z",
+                                     "updatedAt":"2022-02-26T16:37:48.244Z"] as [String : Any]
 
                     // Convert the data to JSON format and add it to the request body
                     guard let httpBody = try? JSONSerialization.data(withJSONObject: postData, options: []) else { return }
