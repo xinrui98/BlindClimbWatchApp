@@ -42,6 +42,8 @@ struct ContentView: View {
                     
                     syn.speak(utterance)
                     
+                    /*
+                    
                     // Create the URL for the JSONPlaceholder API endpoint
                     guard let url = URL(string: "https://mzpoqw4tt9.execute-api.ap-southeast-1.amazonaws.com/Prod/applewatchstats") else { return }
 
@@ -57,8 +59,8 @@ struct ContentView: View {
                                      "date":"placeholder",
                                      "calories":String(workoutManager.activeEnergy),
                                      "heartRate":String(workoutManager.heartRate.formatted(.number.precision(.fractionLength(0)))),
-                                     "createdAt":"2022-02-26T16:37:48.244Z",
-                                     "updatedAt":"2022-02-26T16:37:48.244Z"] as [String : Any]
+                                     "createdAt":"createdAt",
+                                     "updatedAt":"updatedAt"] as [String : Any]
 
                     // Convert the data to JSON format and add it to the request body
                     guard let httpBody = try? JSONSerialization.data(withJSONObject: postData, options: []) else { return }
@@ -83,6 +85,7 @@ struct ContentView: View {
                             }
                         }
                     }.resume()
+                     */
                     
                     workoutManager.selectedWorkout = climbWorkout
                 }
