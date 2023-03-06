@@ -42,6 +42,38 @@ struct ContentView: View {
                     
                     syn.speak(utterance)
                     
+                    // Define the URL and create a URLRequest
+                    guard let url = URL(string: "https://snac8c4owg.execute-api.ap-southeast-1.amazonaws.com/Prod") else {
+                        print("Invalid URL")
+                        return
+                    }
+                    var request = URLRequest(url: url)
+
+                    // Set the HTTP method and headers
+                    request.httpMethod = "POST"
+                    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+                    // Define the request body data
+                    let data = ["key1": "value1", "key2": "value2"]
+                    let jsonData = try? JSONSerialization.data(withJSONObject: data)
+
+                    // Set the request body
+                    request.httpBody = jsonData
+
+                    // Create and send the data task
+                    let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                        if let error = error {
+                            print("Error: \(error.localizedDescription)")
+                        } else if let data = data, let response = response as? HTTPURLResponse {
+                            print("Response status code: \(response.statusCode)")
+                            // Process the response data as needed
+                        }
+                    }
+                    task.resume()
+                    
+                    
+
+                    
                     /*
                     
                     // Create the URL for the JSONPlaceholder API endpoint
